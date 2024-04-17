@@ -1,0 +1,33 @@
+<div class="all">
+  <div class="container">
+    <div class="content">
+      <form class="content__form" (ngSubmit)="OnSubmit()">
+        <div class="content__inputs">
+          <label>
+            <input [(ngModel)]="userCredentials.email" name="email" required type="text">
+            <span>Email</span>
+          </label>
+          <label>
+            <input [(ngModel)]="userCredentials.password" name="password" required type="password">
+            <span>Password</span>
+          </label>
+        </div>
+        <button type="submit">Log In</button>
+      </form>
+      <div class="content__or-text">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="showerr" *ngIf="!LoginErr">
+Invalid user Credentials
+      </div>
+      <div class="content__forgot-buttons">
+        <button type="button">
+          Don't have an account? <a class="loginNav" (click)="NavigateTo()">Sign Up</a>
+        </button>
+        <button type="button">Forgot password?</button>
+      </div>
+    </div>
+  </div>
+</div>

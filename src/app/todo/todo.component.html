@@ -1,0 +1,36 @@
+<div class="container">
+<form class="form" (ngSubmit)="OnSubmit()">
+    <p class="form-title">Enter the Tasks To Do</p>
+     <div class="input-container">
+       <input type="text" [(ngModel)]="todoDetails.title" placeholder="Enter title" name="title" required>
+       <span>
+       </span>
+   </div>
+   <div class="input-container">
+    <p>Start Date</p>
+       <input type="date" [(ngModel)]="todoDetails.startdate" name="startdate" required>
+     </div>
+     <div class="input-container">
+        <p>End Date</p>
+       <input type="date" required [(ngModel)]="todoDetails.enddate" name="enddate">
+     </div>
+<div class="input-container desc">
+    <input type="text" name="desc" [(ngModel)]="todoDetails.desc"  placeholder="Enter Description" required>
+</div>
+
+      <button type="submit"  class="submit">
+     Add Task
+   </button>
+   <div class="showErr" *ngIf="!todoErr">
+Failed to add Task
+   </div>
+   <div class="showErr" *ngIf="todoErr">
+Task added successfully
+   </div>
+
+   <p class="signup-link">
+     View Your Tasks
+     <a href="">Click Here</a>
+   </p>
+</form>
+</div>

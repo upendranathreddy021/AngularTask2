@@ -1,0 +1,23 @@
+<div class="container">
+<div class="form-box">
+    <form class="form" (ngSubmit)="OnSubmit()">
+        <span class="title">Sign up</span>
+        <span class="subtitle">Create a free account with your email.</span>
+        <div class="form-container">
+          <input type="text" class="input" name="fullname" placeholder="Full Name" [(ngModel)]="RegCredentials.fullname" required>
+                <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="RegCredentials.email" required>
+                <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="RegCredentials.password" required>
+        </div>
+        <button type="submit">Sign up</button>
+<div *ngIf="!RegistrationError">
+Email already exists
+</div>
+
+
+    </form>
+
+
+    <div class="form-section">
+      <p>Have an account? <a href="">Log in</a> </p>
+    </div>
+    </div></div>
