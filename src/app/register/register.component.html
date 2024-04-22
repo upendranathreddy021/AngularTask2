@@ -7,10 +7,12 @@
           <input type="text" class="input" name="fullname" placeholder="Full Name" [(ngModel)]="RegCredentials.fullname" required>
                 <input type="email" class="input" placeholder="Email" name="email" [(ngModel)]="RegCredentials.email" required>
                 <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="RegCredentials.password" required>
+            <div class="role">   <input type="radio" value="user" name="userRole" [(ngModel)]="selectedRole"/>User
+                <input type="radio" value="admin" name="userRole" [(ngModel)]="selectedRole"/>Admin </div> 
         </div>
         <button type="submit">Sign up</button>
-<div *ngIf="!RegistrationError">
-Email already exists
+<div *ngIf="showExist" class="showExist">
+<small>Email Already Exist</small>
 </div>
 
 

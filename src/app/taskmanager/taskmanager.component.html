@@ -1,42 +1,155 @@
-
-<!-- <div class="container">
-<div *ngFor="let todo of allTodo">
-<div class="todo">
-    <p>{{todo.title}}</p>
-    <p>{{todo.startdate}}</p>
-    <p>{{todo.enddate}}</p>
-    <p>{{todo.desc}}</p>
-</div>
-</div>
-
-<button (click)="viewall()">show all</button>
-</div> -->
-
 <!-- In your component.html -->
-<div class="container">
-    <table mat-table [dataSource]="allTodo" class="mat-elevation-z8">
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let todo">{{ todo.title }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="startdate">
-        <th mat-header-cell *matHeaderCellDef>Start Date</th>
-        <td mat-cell *matCellDef="let todo">{{ todo.startdate | date }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="enddate">
-        <th mat-header-cell *matHeaderCellDef>End Date</th>
-        <td mat-cell *matCellDef="let todo">{{ todo.enddate | date }}</td>
-      </ng-container>
-  
-      <ng-container matColumnDef="desc">
-        <th mat-header-cell *matHeaderCellDef>Description</th>
-        <td mat-cell *matCellDef="let todo">{{ todo.desc }}</td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<!-- <button (click)="viewall()">data show</button> -->
+<app-navbar></app-navbar>
+<div class="options">
+  <div>
+    <button (click)="sortByStartDate()" class="btn">Sort Tasks by Start Date</button>
+    <button (click)="sortByEndDate()" class="btn">Sort Tasks by End Date</button>
+  </div>
+  <div class="options2">
+    <p>Total Tasks : <span *ngIf="!isAdmin">{{allTodo.length+allCompletedTodo.length}}</span> <span *ngIf="isAdmin">{{allAdminTodo.length+allAdminCompletedTodo.length}} &nbsp; </span></p>
+    <p>&nbsp;Completed Tasks : <span *ngIf="!isAdmin">{{allCompletedTodo.length}}</span> <span *ngIf="isAdmin">{{allAdminCompletedTodo.length}}  &nbsp; </span></p>
+    <p>&nbsp; Pending Tasks : <span *ngIf="!isAdmin">{{allTodo.length}}</span> <span *ngIf="isAdmin">{{allAdminTodo.length}}</span>  </p>
+  </div>
+</div>
+
+<div class="container1" *ngIf="!isAdmin">
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr colspan="4" *ngIf="allTodo.length<1"><td>No Tasks Available</td></tr>
+        <tr *ngFor="let todo of allTodo">
+          <td>{{ todo.title }}</td>
+          <td>{{ todo.startdate | date }}</td>
+          <td>{{ todo.enddate | date }}</td>
+          <td>{{ todo.desc }}</td>
+          <button (click)="completeTask(todo)">Completed</button>
+        </tr>
+      </tbody>
     </table>
   </div>
+  
+
+
+ 
+  <div class="container1" *ngIf="!isAdmin">
+    <h1>completed Tasks </h1>
+    <table border="1">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Description</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr colspan="4" *ngIf="allCompletedTodo.length<1"><td>No Tasks Available</td></tr>
+          <tr *ngFor="let todo of allCompletedTodo">
+            <td>{{ todo.title }}</td>
+            <td>{{ todo.startdate | date }}</td>
+            <td>{{ todo.enddate | date }}</td>
+            <td>{{ todo.desc }}</td>
+             </tr>
+        </tbody>
+      </table>
+
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+<div class="container" *ngIf="isAdmin">
+  <table mat-table [dataSource]="allAdminTodo" class="mat-elevation-z8">
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="startdate">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.startdate | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="enddate">
+      <th mat-header-cell *matHeaderCellDef>End Date</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.enddate | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="desc">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.desc }}</td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.email }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+
+
+
+<div class="container" *ngIf="isAdmin">
+  <h1>All Completed Tasks</h1>
+  <table mat-table [dataSource]="allAdminCompletedTodo" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="title" *ngIf="allAdminTodo.length<1" colspan="5">
+      
+      <td mat-cell *matCellDef="let todo">No Data Available</td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="startdate">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.startdate | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="enddate">
+      <th mat-header-cell *matHeaderCellDef>End Date</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.enddate | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="desc">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.desc }}</td>
+    </ng-container>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let todo">{{ todo.email }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+
   

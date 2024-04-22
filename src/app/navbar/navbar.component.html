@@ -1,6 +1,9 @@
-<div class="nav" style="display: flex;width: 100%;height: 9vh;background-color: pink;justify-content: space-evenly;">
-    <div class="item"><a href="/todo">todo</a></div>
-    <div class="item"><a href="/todolist">todolist</a></div>
-    <div class="item"><a href="/taskmanager">Task Manager</a></div>
-    <div class="item" (click)="logout()">logout</div>
+<div class="nav" style="display: flex;width: 100%;height: 7vh;background-color: pink;justify-content: space-evenly;align-items: center;">
+    <div class="item" routerLinkActive="active"><a href="/todo">Add Tasks</a></div>
+    <!-- <div class="item"><a href="/todolist">todolist</a></div> -->
+    <div class="item" routerLinkActive="active"><a href="/taskmanager">Task Manager</a></div>
+    <div class="item"><a routerLinkActive="active" href="/calender">Calendar</a></div>
+    <div class="item"><a routerLinkActive="active" href="/comments">Comments</a></div>
+    <div class="item" routerLinkActive="active" (click)="logout()">Logout</div>
+    <div class="item" routerLinkActive="active"><a href="/maps">Maps</a></div>
 </div>

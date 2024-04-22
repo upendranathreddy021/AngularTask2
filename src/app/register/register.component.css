@@ -84,3 +84,9 @@
   .form button:hover {
     background-color: #005ce6;
   }
+
+  .role{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }

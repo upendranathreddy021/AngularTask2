@@ -1,3 +1,78 @@
 mat-form-field {
     margin-right: 12px;
   }
+  .options{
+    width: 100%;
+    height: 9vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .options div{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .options2{
+    display: flex;
+    justify-content: space-evenly;
+
+  }
+  .options2 span{
+    font-size: 18px;
+    font-weight: 600;
+    font-family: monospace;
+    color: black;
+  }
+
+  .btn {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .btn:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+   
+  }
+  
+  .btn:active {
+    transform: translateY(-1px);
+  }
+  .container1 table{
+    width: 100%;
+    height: auto;
+  }
+
+  .container1 table button{
+    width: 100%;
+    height: 110%;
+    background-color: rgb(21, 118, 150);
+    color: black;
+    outline: none;
+    border: none;
+  }
+  .container1 table button:hover{
+    background-color: burlywood;
+  }
+
+  .container1 tr:nth-child(odd){
+    background-color: rgb(60, 251, 251);
+    color: rgba(5, 2, 2, 0.804);
+  }
+  .container1 tr:nth-child(even){
+    color: rgba(2, 11, 12, 0.979);
+    background-color: rgba(15, 8, 8, 0.47);
+  }

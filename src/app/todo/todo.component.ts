@@ -7,41 +7,55 @@ import { AuthService } from '../Services/auth.service';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-
-  //=============> Variables  starts here <=============
-  todoErr:boolean=false
-  showerr:boolean=false
-
- 
-  constructor(private authservice:AuthService) { }
-
- 
+  todoDetails = {
+    title: "",
+    startdate: "",
+    enddate: "",
+    desc: ""
+  };
+  isFailed: boolean = false;
+  isSuccess: boolean = false;
+  
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  todoDetails={
-    title:"",
-    startdate:new Date(),
-    enddate:new Date(),
-    desc:""
+  canSubmit(): boolean {
+    return this.todoDetails.title && this.todoDetails.startdate &&
+           this.todoDetails.enddate && this.todoDetails.desc &&
+           new Date(this.todoDetails.startdate) < new Date(this.todoDetails.enddate);
   }
 
-  OnSubmit(){
-    console.log("in todo comp",this.todoDetails)
-
-    let todoData=this.authservice.TodoStore(this.todoDetails.title,this.todoDetails.startdate,this.todoDetails.enddate,this.todoDetails.desc)
-
-    if(todoData){
-      this.todoErr=true
-      console.log("submitted successfull")
-    }
-    else{
-      console.log("submitted failed")
-      this.todoErr=false
+  onSubmit() {
+    if (!this.canSubmit()) {
+      this.isFailed = true;
+      this.isSuccess = false;
+      return;
     }
 
+    const startDate = new Date(this.todoDetails.startdate);
+    const endDate = new Date(this.todoDetails.enddate);
+    let todoData = this.authService.TodoStore(this.todoDetails.title, startDate, endDate, this.todoDetails.desc);
 
+    if (todoData) {
+      this.resetForm();
+      this.isFailed = false;
+      this.isSuccess = true;
+      setTimeout(() => { this.isSuccess = false; }, 2500);
+    } else {
+      this.isFailed = true;
+      this.isSuccess = false;
+      setTimeout(() => { this.isFailed = false; }, 2500);
+    }
   }
 
+  resetForm() {
+    this.todoDetails = {
+      title: "",
+      startdate: "",
+      enddate: "",
+      desc: ""
+    };
+  }
 }

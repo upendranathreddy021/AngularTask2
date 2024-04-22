@@ -19,8 +19,8 @@
         <span></span>
         <span></span>
       </div>
-      <div class="showerr" *ngIf="!LoginErr">
-Invalid user Credentials
+      <div class="showerr" *ngIf="showInvalid" style="color: red;font-size: 12px;">
+Invalid User Credentials
       </div>
       <div class="content__forgot-buttons">
         <button type="button">

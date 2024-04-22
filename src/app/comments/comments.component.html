@@ -1,0 +1,75 @@
+
+
+<app-navbar></app-navbar>
+
+
+<div class="container">
+
+
+
+   <!-- <table mat-table [dataSource]="commentsData" class="mat-elevation-z8" >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let todo">{{ todo.id }}</td>
+      </ng-container>y
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let todo">{{ todo.name}}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>End Date</th>
+        <td mat-cell *matCellDef="let todo">{{ todo.email }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="body">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let todo">{{ todo.body }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let todo">{{ todo.email }}</td>
+      </ng-container> 
+  
+      
+    </table>-->
+
+
+
+
+    <table>
+      <thead>
+<tr class="head"  style="background-color: rgba(255, 192, 203, 0.881);color: rgba(0, 0, 0, 0.756);"><th>Id</th>
+<th>Name</th>
+<th>Email</th>
+<th>Comment</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of pageslice; let i = index" 
+        [style.background-color]="i % 2 === 0 ? 'rgba(0, 0, 0, 0.731)' : 'rgba(65, 194, 93, 0.767)'"
+        [style.color]="i % 2 === 0 ? 'rgba(255, 252, 203, 0.884)' : 'rgba(0, 0, 0, 0.92)'"
+        class="allrows">
+        <td>{{item.id}}</td>
+<td>{{item.name}}</td>
+<td>{{item.email}}</td>
+<td>{{item.body}}</td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+
+    <mat-paginator [length]="this.commentsData.length"
+              [pageSize]="5"
+              [pageSizeOptions]="[5,10,15]"
+              
+              (page)="onPageChange($event)">
+</mat-paginator>
+  </div>
+  
+  
+    

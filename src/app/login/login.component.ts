@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 LoginErr:boolean=false
 
 
-
+showInvalid:boolean=false
 
 
   // Object to store user credentials
@@ -39,6 +39,10 @@ this.LoginErr=true
   }
   else{
     this.LoginErr=false
+    this.showInvalid=true
+    setTimeout(() => {
+      this.showInvalid = false;
+    }, 2500);
 
 
   }

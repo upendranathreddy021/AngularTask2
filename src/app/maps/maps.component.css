@@ -1,0 +1,5 @@
+#map {
+    width: 100%;  /* Ensure the map has a specified width or fits the container width */
+    height: 500px; /* You've already set the height, just make sure it's enough */
+  }
+  
