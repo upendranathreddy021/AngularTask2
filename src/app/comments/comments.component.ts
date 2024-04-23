@@ -39,7 +39,7 @@ dataSource=new MatTableDataSource<any>(this.commentsData)
     this.dataSource.paginator=this.paginator
     
     this.fetchComments()
-
+    
     setTimeout(() => {
       this.alldata()
       
@@ -65,6 +65,7 @@ this.http.get<any>('https://jsonplaceholder.typicode.com/comments')
 .subscribe((res)=>{
   console.log(res,"comments")
   this.commentsData=res
+  this.pageslice=this.commentsData.slice(0,5)
 })
 //console.log("fromin http",this.commentsData)
 

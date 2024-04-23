@@ -6,6 +6,7 @@ import { AuthService } from '../Services/auth.service';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
+
 export class TodoComponent implements OnInit {
   todoDetails = {
     title: "",
@@ -13,6 +14,7 @@ export class TodoComponent implements OnInit {
     enddate: "",
     desc: ""
   };
+
   isFailed: boolean = false;
   isSuccess: boolean = false;
   

@@ -29,7 +29,9 @@ import { LoginupdatedComponent } from './loginupdated/loginupdated.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MapsComponent } from './maps/maps.component';
+//import { ChartsComponent } from './charts/charts.component';
 
+//import { HighchartsChartModule } from 'highcharts-angular';
 
 
 
@@ -62,6 +64,7 @@ const appRoutes:Routes=[
     CommentsComponent,
     LoginupdatedComponent,
     MapsComponent
+  
   ],
   imports: [FormsModule,
     // CommonModule,NgbModalModule ,FlatpickrModule.forRoot(),
@@ -78,7 +81,8 @@ const appRoutes:Routes=[
     RouterModule.forRoot(appRoutes),
     MatInputModule,MatTableModule,
      ReactiveFormsModule,BrowserAnimationsModule,
-     MatPaginatorModule,HttpClientModule
+     MatPaginatorModule,HttpClientModule,ReactiveFormsModule
+     //,HighchartsChartModule
   ],
   exports:[RouterModule],
   providers: [AuthService],

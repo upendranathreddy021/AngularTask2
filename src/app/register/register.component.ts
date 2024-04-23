@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../Services/auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,6 +17,10 @@ RegistrationError:boolean=false;
 //   fullname:"",
 //   email:"",password:"",role:""
 // }
+//=================> Variables end from here  <====================
+
+
+//=================> implmenting reactive forms module
 
 
 

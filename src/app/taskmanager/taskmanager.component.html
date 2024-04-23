@@ -28,8 +28,8 @@
         <tr colspan="4" *ngIf="allTodo.length<1"><td>No Tasks Available</td></tr>
         <tr *ngFor="let todo of allTodo">
           <td>{{ todo.title }}</td>
-          <td>{{ todo.startdate | date }}</td>
-          <td>{{ todo.enddate | date }}</td>
+          <td>{{ todo.startdate | date:'mediumDate' }}</td>
+          <td>{{ todo.enddate | date:'fullDate' }}</td>
           <td>{{ todo.desc }}</td>
           <button (click)="completeTask(todo)">Completed</button>
         </tr>
@@ -42,7 +42,7 @@
  
   <div class="container1" *ngIf="!isAdmin">
     <h1>completed Tasks </h1>
-    <table border="1">
+    <table border="0">
         <thead>
           <tr>
             <th>Title</th>
@@ -56,8 +56,8 @@
           <tr colspan="4" *ngIf="allCompletedTodo.length<1"><td>No Tasks Available</td></tr>
           <tr *ngFor="let todo of allCompletedTodo">
             <td>{{ todo.title }}</td>
-            <td>{{ todo.startdate | date }}</td>
-            <td>{{ todo.enddate | date }}</td>
+            <td>{{ todo.startdate | date:'mediumDate' }}</td>
+            <td>{{ todo.enddate | date:"fullDate" }}</td>
             <td>{{ todo.desc }}</td>
              </tr>
         </tbody>
@@ -152,4 +152,5 @@
 </div>
 
 
+<!-- <app-charts></app-charts> -->
   

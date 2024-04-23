@@ -14,12 +14,12 @@ export class CalenderComponent implements OnInit {
   view: CalendarView = CalendarView.Month;
   refresh: Subject<any> = new Subject();
   events: CalendarEvent[] = [];
-  CalendarView = CalendarView; // This exposes the enum to the template
+  CalendarView = CalendarView; 
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    let todoData = this.authService.getAllTodos(); // Assuming this method is synchronous
+    let todoData = this.authService.getAllTodos();
     this.events = todoData.map(task => ({
       title: task.title,
       start: new Date(task.startdate),
@@ -50,20 +50,20 @@ export class CalenderComponent implements OnInit {
   dayClicked({ day, sourceEvent }: { day: CalendarMonthViewDay<any>; sourceEvent: MouseEvent | KeyboardEvent }): void {
     this.viewDate = day.date;
     this.view = CalendarView.Day;
-    // Optionally, you can process events for the clicked day here if needed
+   
   }
 
   beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
     body.forEach(day => {
       const dayStartTimestamp = day.date.getTime();
-      day.cssClass = ''; // Initialize or reset the custom class
+      day.cssClass = ''; 
 
       day.events.forEach(event => {
         if (dayStartTimestamp === new Date(event.start).getTime()) {
-          day.cssClass += ' bg-green'; // Add class if the event starts on this day
+          day.cssClass += ' bg-green'; 
         }
         if (dayStartTimestamp === new Date(event.end).getTime()) {
-          day.cssClass += ' bg-red'; // Add class if the event ends on this day
+          day.cssClass += ' bg-red'; 
         }
       });
     });
